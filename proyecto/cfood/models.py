@@ -13,4 +13,4 @@ class Recipes(models.Model):
 
 class Ingredients(models.Model):
     recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE)
-    ingredient = models.CharField(max_length=100)
+    ingredients = models.CharField(max_length=100)
