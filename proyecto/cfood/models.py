@@ -5,7 +5,7 @@ class User(models.Model):
     username = models.CharField(max_length=20)
     password = models.CharField(max_length=19)
     email = models.EmailField()
-
+    name = models.CharField(max_length=70)
 class Recipes(models.Model):
     recipeName = models.CharField(max_length=100)
     duration = models.IntegerField()
