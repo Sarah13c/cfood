@@ -8,4 +8,6 @@ urlpatterns = [
 
     path('', views.login,name='login'),
     path('<int:recipes_id>/', views.detail,name='detail'),
+    path('register/', views.register, name='register'),
+
 ]

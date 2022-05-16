@@ -4,7 +4,7 @@ from django.http import Http404
 from django.views.generic import TemplateView
 from django.shortcuts import      HttpResponse
 from .models import Recipes
-
+from .forms import RegisterForm
 def detail(request, recipes_id):
     try:
         recipe = Recipes.objects.get(pk=recipes_id)
@@ -23,6 +23,22 @@ def index(request):
 # Create your views here.
 #class login(TemplateView):
  #   template_name = 'C:/Users/sarah/PycharmProjects/proyecto/proyecto/template/login.html'
+def register(request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            user.profile.username = form.cleaned_data.get('username')
+            user.profile.first_name = form.cleaned_data.get('first_name')
+            user.profile.last_name = form.cleaned_data.get('last_name')
+            user.profile.email = form.cleaned_data.get('email')
+            user.is_active = False
+            user.save()
+    else:
+        form = RegisterForm()
+    context = { 'form' : form}
+    return render(request,'C:/Users/sarah/PycharmProjects/proyecto/proyecto/cfood/template/register/register.html', context)
 
 
 
