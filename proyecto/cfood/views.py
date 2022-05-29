@@ -9,13 +9,16 @@ from .models import *
 
 
 
+
 def inicio(request):
-    print(request.user)
-    recetitas = Recipes.objects.all()
-    context = {'post': recetitas}
-    return render(request, 'C:/Users/sarah/PycharmProjects/proyecto/proyecto/cfood/template/templateSusana/index.html',  context)
+    #"C:/Users/sarah/PycharmProjects/proyecto/proyecto/cfood/template/templateSusana/index.html"
+    total_recipes = Recipe.objects.all().count()
+    context = {
+        "title": "Homepage",
+        "total_recipes": total_recipes,
+    }
 
-
+    return render(request, "C:/Users/sarah/PycharmProjects/proyecto/proyecto/cfood/template/home.html", context)
 
 
 def registerpr(request):
