@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/inicia-sesion/'
-LOGIN_REDIRECT_URL = 'feed'
+LOGIN_REDIRECT_URL = 'inicio '
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 

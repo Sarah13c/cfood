@@ -1,10 +1,11 @@
 {% load static %}
+
 <!-- Created By CodingNepal -->
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <!-- <title>Popup Login Form Design | CodingNepal</title> -->
-    <link rel="stylesheet" href="{% static 'C:/Users/sarah/PycharmProjects/proyecto/proyecto/cfood/template/register/register.css' %}"/>
+    <link rel="stylesheet" href="{% static 'C:/Users/sarah/PycharmProjects/proyecto/proyecto/cfood/static/css/register.css' %}"/>
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   </head>
   <body>
@@ -12,37 +13,21 @@
       <input type="checkbox" id="show">
       <label for="show" class="show-btn">Registro</label>
       <div class="container">
-        <label for="show" class="close-btn fas fa-times" title="close"></label>
-        <div class="text">
-Registrar</div>
+        <label for="show" class="clo    se-btn fas fa-times" title="close"></label>
+        <div class="text">Registrar</div>
+          {% block content %}
 <form class="form" method="post">
 
     {% csrf_token %}
     {{ form.as_p }}
-    <div class="data">
-        <label>Nombre</label>
-        <input type="text" required>
-      </div>
-          <div class="data">
-            <label>Nombre de usuario</label>
-            <input type="text" required>
-          </div>
-<div class="data">
-            <label>Contraseña</label>
-            <input type="password" required>
-          </div>
-          <div class="data">
-            <label>Email</label>
-            <input type="text" required>
-          </div>
-<div class="btn">
-            <div class="inner">
-</div>
+
 <button type="submit" id="submit">Registrar</button>
-          </div>
+
 
 </form>
+          {% endblock %}
 </div>
 </div>
 </body>
 </html>
+

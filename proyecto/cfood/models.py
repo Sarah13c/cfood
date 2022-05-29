@@ -1,9 +1,10 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
-class User(models.Model):
+class UserApp(models.Model):
+    #user_sys = models.ForeignObject(User, on_delete=models.CASCADE, null=True)
     username = models.CharField(max_length=20)
-    password = models.CharField(max_length=19)
     email = models.EmailField()
     name = models.CharField(max_length=70)
 class Recipes(models.Model):
