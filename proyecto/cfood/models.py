@@ -5,10 +5,11 @@ from django.shortcuts import reverse
 
 # Create your models here.
 class UserApp(models.Model):
-    #user_sys = models.ForeignObject(User, on_delete=models.CASCADE, null=True)
     username = models.CharField(max_length=20)
     email = models.EmailField()
     name = models.CharField(max_length=70)
+
+
 class Recetas(models.Model):
     recipeName = models.CharField(max_length=100)
     duration = models.IntegerField()
@@ -39,6 +40,7 @@ class Recipe(models.Model):
     carbs = models.CharField(max_length=5)
     protein = models.CharField(max_length=5)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+
 
     def __str__(self):
         return self.title

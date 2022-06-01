@@ -3,6 +3,7 @@
    {% load static %}
 
    {% include 'head.html' %}
+   <script src="https://kit.fontawesome.com/c0ae00d3f7.js" crossorigin="anonymous"></script>
     <style>
        html,
        body,
@@ -12,14 +13,41 @@
        min-height: 800px;
        }
     </style>
+   <header>
+       <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          hola, {{request.user}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{%url 'user_logout'%}">Logout</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+   </header>
+
+
 
    <body>
       <!-- Intro Section -->
 
+
+
       <div class="view jarallax" data-jarallax='{"speed": 0.2}'
          style="background-image: url('https://images.ctfassets.net/hrltx12pl8hq/6QpKgim9qMgGK8QG2a6gaC/2de28b955c0cf902004fecd1a1e62bee/sub-category-1.jpg?fit=fill&w=368&h=207'); background-repeat: no-repeat; background-size: cover; background-position: center center;margin-top:-100px;">
-         <div class="mask rgba-indigo-light">
+          <div class="mask rgba-indigo-light">
+
             <div class="container h-100 d-flex justify-content-center align-items-center">
+
                <div class="row">
                   <div class="col-md-12 wow fadeIn">
                      <div class="text-center white-text">
@@ -112,6 +140,7 @@
             </div>
          </div>
          <!-- Copyright -->
+
       </footer>
       <!-- Footer -->
       {% include 'scripts.html' %}
