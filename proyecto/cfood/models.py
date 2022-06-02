@@ -27,6 +27,7 @@ class Topic(models.Model):
         return self.title
 
 class Recipe(models.Model):
+
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from="title")
     image = models.CharField(max_length=400)
@@ -40,6 +41,9 @@ class Recipe(models.Model):
     carbs = models.CharField(max_length=5)
     protein = models.CharField(max_length=5)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    favourites = models.ManyToManyField(
+        User, related_name='favourite', default=None, blank=True)
+
 
 
     def __str__(self):

@@ -143,7 +143,7 @@ def detail(request, slug):
 
 
 
-def favourite_add(request, id):
+def favourite_add3(request, id):
     receta = get_object_or_404(Recipe, id=id)
     if receta.favourites.filter(id=request.user.id).exists():
         receta.favourites.remove(request.user)
@@ -151,17 +151,38 @@ def favourite_add(request, id):
         receta.favourites.add(request.user)
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
+"""def favourite_add(request, id):
+    recipe = get_object_or_404(Recipe, id=id)
+    if request.method == 'POST':
+        recipe.favourite.add(request.user)
+    return render(request, 'favourite.html' % id)"""
 
-def favourite_list(request):
+def favourite_add(request, id):
+    recipe = get_object_or_404(Recipe, id=id)
+    if recipe.favourites.filter(id=request.user.id).exists():
+        recipe.favourites.add(request.user)
+    else:
+        recipe.favourites.add(request.user)
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+"""def favourite_list(request):
     receta = get_object_or_404(Recipe, id=id)
     new = receta.filter(favourites=request.user)
+    return render(request,
+                  'cfood/favourites.html',
+                  {'new': new})"""
+
+def favourite_list(request):
+    new = Recipe.newmanager.filter(favourites=request.user)
     return render(request,
                   'cfood/favourites.html',
                   {'new': new})
 def user_logout(request):
     logout(request)
     return redirect('index')
-    """def favourite_list(request):
+
+
+"""def favourite_list(request):
     new = Post.newmanager.filter(favourites=request.user)
     return render(request,
                     'accounts/favourites.html',
