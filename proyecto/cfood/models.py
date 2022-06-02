@@ -10,15 +10,6 @@ class UserApp(models.Model):
     name = models.CharField(max_length=70)
 
 
-class Recetas(models.Model):
-    recipeName = models.CharField(max_length=100)
-    duration = models.IntegerField()
-    description = models.CharField(max_length=400)
-
-class Ingredients(models.Model):
-    recipe = models.ForeignKey(Recetas, on_delete=models.CASCADE)
-    ingredient = models.CharField(max_length=100)
-
 class Topic(models.Model):
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from="title")
@@ -27,7 +18,6 @@ class Topic(models.Model):
         return self.title
 
 class Recipe(models.Model):
-
     title = models.CharField(max_length=200)
     slug = AutoSlugField(populate_from="title")
     image = models.CharField(max_length=400)
@@ -43,8 +33,6 @@ class Recipe(models.Model):
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     favourites = models.ManyToManyField(
         User, related_name='favourite', default=None, blank=True)
-
-
 
     def __str__(self):
         return self.title

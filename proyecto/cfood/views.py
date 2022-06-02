@@ -173,9 +173,9 @@ def favourite_add(request, id):
                   {'new': new})"""
 
 def favourite_list(request):
-    new = Recipe.newmanager.filter(favourites=request.user)
+    new = Recipe.objects.filter(favourites=request.user)
     return render(request,
-                  'cfood/favourites.html',
+                  'favourite.html',
                   {'new': new})
 def user_logout(request):
     logout(request)
